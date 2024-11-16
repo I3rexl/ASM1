@@ -1,18 +1,26 @@
 package com.example.asm1;
 
 public class CarModel {
-    private String id;
+    private String _id;
     private String ten;
     private int namSX;
     private String hang;
     private double gia;
 
-    public String getId() {
-        return id;
+    public CarModel(String _id, String ten, int namSX, String hang, double gia) {
+        this._id = _id;
+        this.ten = ten;
+        this.namSX = namSX;
+        this.hang = hang;
+        this.gia = gia;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getTen() {
@@ -44,14 +52,6 @@ public class CarModel {
     }
 
     public void setGia(double gia) {
-        this.gia = gia;
-    }
-
-    public CarModel(String id, String ten, int namSX, String hang, double gia) {
-        this.id = id;
-        this.ten = ten;
-        this.namSX = namSX;
-        this.hang = hang;
         this.gia = gia;
     }
 }
