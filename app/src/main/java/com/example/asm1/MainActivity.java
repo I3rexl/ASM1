@@ -43,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
         lvMain= findViewById(R.id.lvMain);
         btnAdd= findViewById(R.id.btnAdd);
 
+        btnAdd= findViewById(R.id.btnAdd);
+
+        String packageName = getApplicationContext().getPackageName();
+        Log.d("PackageName", packageName);
+
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIService.DOMAIN)
@@ -78,6 +84,71 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 CarModel xeMoi= new CarModel(null, "Xe moi 2", 2020, "Huyndai", 1000);
+
+                Call<List<CarModel>> callAddXe= apiService.addXe(xeMoi);
+
+                callAddXe.enqueue(new Callback<List<CarModel>>() {
+                    @Override
+                    public void onResponse(Call<List<CarModel>> call, Response<List<CarModel>> response) {
+                        if(response.isSuccessful()){
+                            listCarModel.clear();
+                            listCarModel.addAll(response.body());
+                            carAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<CarModel>> call, Throwable t) {
+
+                    }
+                });
+            }
+        });
+
+
+
+
+
+
+
+        lvMain.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                CarModel xeCanXoa= listCarModel.get(i);
+
+                Call<List<CarModel>> callXoaXe= apiService.xoaXe(xeCanXoa.get_id());
+
+                Log.d("Debug", "ID cần xóa: " + xeCanXoa.get_id());
+
+
+                callXoaXe.enqueue(new Callback<List<CarModel>>() {
+                    @Override
+                    public void onResponse(Call<List<CarModel>> call, Response<List<CarModel>> response) {
+                        if (response.isSuccessful()){
+                            listCarModel.clear();
+                            listCarModel.addAll(response.body());
+                            carAdapter.notifyDataSetChanged();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<CarModel>> call, Throwable t) {
+
+                    }
+                });
+
+
+                return true;
+            }
+        });
+
+
+
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                CarModel xeMoi= new CarModel(null, "Xe moi 1", 2021, "Huyndai", 10000);
 
                 Call<List<CarModel>> callAddXe= apiService.addXe(xeMoi);
 
