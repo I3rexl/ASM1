@@ -43,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
         lvMain= findViewById(R.id.lvMain);
         btnAdd= findViewById(R.id.btnAdd);
 
+        String packageName = getApplicationContext().getPackageName();
+        Log.d("PackageName", packageName);
+
+
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIService.DOMAIN)
