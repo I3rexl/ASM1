@@ -1,4 +1,4 @@
-package com.example.asm1;
+package com.example.asm1.Model;
 
 public class CarModel {
     private String _id;

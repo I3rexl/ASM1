@@ -1,4 +1,6 @@
-package com.example.asm1;
+package com.example.asm1.Server;
+
+import com.example.asm1.Model.CarModel;
 
 import java.util.List;
 
@@ -12,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface APIService {
 
-    String DOMAIN= "http://10.24.60.19:3000/";
+    String DOMAIN= "http://10.24.37.50:3000/";
 
     @GET("/api/list")
     Call<List<CarModel>> getCars();

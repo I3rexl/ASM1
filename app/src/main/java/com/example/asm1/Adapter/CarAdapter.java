@@ -1,4 +1,4 @@
-package com.example.asm1;
+package com.example.asm1.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.asm1.Model.CarModel;
+import com.example.asm1.R;
 
 import java.util.List;
 

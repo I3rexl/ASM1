@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    app:cardCornerRadius="10dp">
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#EDBF90">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm xe mới"
+            android:textAlignment="center"
+            android:textColor="#FF0000"
+            android:textAllCaps="true"
+            android:textSize="24dp"
+            />
+
+        <EditText
+            android:id="@+id/edttenxe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Tên xe"
+            android:layout_marginTop="5dp"
+            />
+        <EditText
+            android:id="@+id/edtnamsx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Năm sản xuất"
+            android:layout_marginTop="15dp"
+            />
+
+        <EditText
+            android:id="@+id/edthang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Hãng xe"
+            android:layout_marginTop="15dp"
+            />
+
+        <EditText
+            android:id="@+id/edtgia"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Giá"
+            android:layout_marginTop="15dp"
+            />
+
+        <Button
+            android:id="@+id/btnthem"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thêm"
+            android:backgroundTint="#E91E63"
+            />
+
+        <Button
+            android:id="@+id/btnhuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hủy"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#03A9F4"
+            />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
