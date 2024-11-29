@@ -243,7 +243,6 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<CarModel>> call, Response<List<CarModel>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     listCarModel.addAll(response.body()); // Thêm dữ liệu vào carList
-                    carAdapter.notifyDataSetChanged(); // Cập nhật RecyclerView
                 } else {
                     Log.e("API Error", "Response unsuccessful");
                 }
