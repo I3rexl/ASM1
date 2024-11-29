@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton btnAdd;
     private RecyclerView recyclerView;
     private CarFilterAdapter carFilterAdapter;
-    private SearchView searchView;
 
 
     Retrofit retrofit = new Retrofit.Builder()
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
         lvMain= findViewById(R.id.lvMain);
         btnAdd= findViewById(R.id.btnAdd);
         recyclerView = findViewById(R.id.recyclerView);
-        searchView = findViewById(R.id.searchView);
 
         String packageName = getApplicationContext().getPackageName();
         Log.d("PackageName", packageName);
@@ -107,19 +105,6 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(carFilterAdapter);
         fetchCarsFromApi();
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                carFilterAdapter.filter(query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                carFilterAdapter.filter(newText); // Lọc danh sách khi nhập văn bản
-                return false;
-            }
-        });
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,44 +130,6 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
-
-
-
-
-
-
-
-        lvMain.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                CarModel xeCanXoa= listCarModel.get(i);
-
-                Call<List<CarModel>> callXoaXe= apiService.xoaXe(xeCanXoa.get_id());
-
-                Log.d("Debug", "ID cần xóa: " + xeCanXoa.get_id());
-
-
-                callXoaXe.enqueue(new Callback<List<CarModel>>() {
-                    @Override
-                    public void onResponse(Call<List<CarModel>> call, Response<List<CarModel>> response) {
-                        if (response.isSuccessful()){
-                            listCarModel.clear();
-                            listCarModel.addAll(response.body());
-                            carAdapter.notifyDataSetChanged();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<List<CarModel>> call, Throwable t) {
-
-                    }
-                });
-
-
-                return true;
-            }
-        });
-
 
 
 
