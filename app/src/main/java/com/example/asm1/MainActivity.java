@@ -72,10 +72,6 @@ public class MainActivity extends AppCompatActivity {
         btnAdd= findViewById(R.id.btnAdd);
         recyclerView = findViewById(R.id.recyclerView);
 
-        String packageName = getApplicationContext().getPackageName();
-        Log.d("PackageName", packageName);
-
-
 
         call.enqueue(new Callback<List<CarModel>>() {
             @Override
